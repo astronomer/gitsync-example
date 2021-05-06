@@ -58,6 +58,7 @@ def taskflow():
         """
         url = 'https://covidtracking.com/api/v1/states/'
         res = requests.get(url+'{0}/current.json'.format(os.environ['STATE']))
+        print(res.text)
         return{'testing_increase': json.loads(res.text)['totalTestResultsIncrease']}
 
     get_testing_increase()
