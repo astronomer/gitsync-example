@@ -20,7 +20,7 @@ new_config ={ "pod_override": k8s.V1Pod(
                                 k8s.V1EnvVar(name="AIRFLOW__CORE__DAGS_FOLDER", value="/usr/local/airflow/dags/latest/dags")
                                ],
                             volume_mounts=[
-                                k8s.V1VolumeMount(name="dags", mountPath="/usr/local/airflow/dags")
+                                k8s.V1VolumeMount(name="dags", mount_path="/usr/local/airflow/dags")
                                 ]
                             ),
                         k8s.V1Container(
@@ -35,7 +35,7 @@ new_config ={ "pod_override": k8s.V1Pod(
                                 k8s.V1EnvVar(name="GIT_SYNC_WAIT", value="10")
                                 ],
                             volume_mounts=[
-                                k8s.V1VolumeMount(name="dags", mountPath="/usr/local/airflow/dags", readOnly=False)
+                                k8s.V1VolumeMount(name="dags", mount_path="/usr/local/airflow/dags", read_only=False)
                                 ]
                             )
                         ]
