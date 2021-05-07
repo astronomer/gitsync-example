@@ -27,7 +27,8 @@ new_config ={ "pod_override": k8s.V1Pod(
                             name="git-sync",
                             image="k8s.gcr.io/git-sync/git-sync:v3.3.0",
                             image_pull_policy="IfNotPresent",
-                            env=[
+                            # env_from=[k8s.V1EnvFromSource(secret_ref=k8s.V1SecretEnvSource(name="gitsync"))],
+                            env=[ # Optionally the following env variables can be added to a `gitsync` secret and the above env_from can be used instead.
                                 k8s.V1EnvVar(name="GIT_SYNC_REPO", value="https://github.com/astronomer/gitsync-example.git"),
                                 k8s.V1EnvVar(name="GIT_SYNC_BRANCH", value="main"),
                                 k8s.V1EnvVar(name="GIT_SYNC_ROOT", value="/usr/local/airflow/dags"),
